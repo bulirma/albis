@@ -1,8 +1,7 @@
 #!/bin/sh
 
 workdir="$( mktemp -d )"
-#src="http://192.168.42.101"
-src="http://192.168.88.250"
+src="https://raw.githubusercontent.com/bulirma/albis/master"
 
 wget -h >/dev/null || pacman --noconfirm --needed -Sy wget
 

@@ -1,9 +1,7 @@
 #!/bin/sh
 
-
 # external vars:
 # 	$gum
-
 
 # Installs additional dependecies not provided by oficial Artix Linux ISO.
 check_and_install_albis_dependencies() {

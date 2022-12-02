@@ -1,16 +1,13 @@
 #!/bin/sh
 
-
 # external vars:
 # 	$target_device
 # 	$mount_point
-
 
 # Lists disks and outputs them to stdout.
 list_disks() {
 	lsblk -dlp | awk '/ (8|259):/ { print $1" ("$4")" }'
 }
-
 
 # This function is divided into three sections
 # Partitioning ... parted is recommended to use

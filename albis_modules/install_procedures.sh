@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # external vars:
 # 	$boot
 # 	$target_device
@@ -10,7 +9,6 @@
 # 	$password
 # 	$root_password
 # 	$user_source_directory
-
 
 # $1 ... init system
 base_install() {
@@ -31,11 +29,9 @@ base_install() {
 	unset _packages
 }
 
-
 install() {
 	pacman --noconfirm --needed -S "$@" || return 1
 }
-
 
 install_dotfiles() {
 	_temp_dir="$( sudo -u "$username" mktemp -d )"
@@ -44,7 +40,6 @@ install_dotfiles() {
 	rm -rf "$_temp_dir"
 	unset _temp_dir
 }
-
 
 base_config() {
 	# time
@@ -98,7 +93,6 @@ en_US ISO-8859-1" >>/etc/locale.gen
 	grub-mkconfig -o /boot/grub/grub.cfg
 }
 
-
 set_users() {
 	# root password
 	echo "root:$root_password" | chpasswd
@@ -108,13 +102,6 @@ set_users() {
 	echo "$username:$password" | chpasswd
 
 	sudo -u "$username" mkdir -p "/home/$username/$user_source_directory"
-}
-
-
-# get rid of that horrible sound
-system_beep_off() {
-	rmmod pcspkr
-	echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf
 }
 
 # get rid of that horrible sound

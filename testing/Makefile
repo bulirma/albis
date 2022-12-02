@@ -12,7 +12,7 @@ install: artix_box.cow artix.iso
 	qemu-system-x86_64 -enable-kvm -m 4G -boot order=d -cdrom $(ISO_FILE) -drive file=artix_box.cow,format=qcow2
 
 run: artix_box.cow
-	qemu-system-x86_64 -enable-kvm -m 4G -boot order=d testing/artix_box.cow
+	qemu-system-x86_64 -enable-kvm -m 4G -boot order=d artix_box.cow
 
 update: albis
 	rsync -urv albis/albis.sh $(SHARED_DIR)

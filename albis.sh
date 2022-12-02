@@ -75,7 +75,7 @@ if ! $bootstrapped; then
 	cp "$0" "$tmp_dest_dir/"
 	cp -r "$workdir/albis_modules" "$tmp_dest_dir/"
 	artix-chroot "$mount_point" /bin/sh -c "cd /root/albis; sh albis.sh $config_file $username $password $root_password"
-	#rm -rf "$tmp_dest_dir"
+	rm -rf "$tmp_dest_dir"
 	finalize
 else
 	base_config

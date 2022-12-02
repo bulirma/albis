@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 init_systems="
 openrc
 runit

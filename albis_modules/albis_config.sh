@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # external vars:
 # 	$boot
 # 	$gum
@@ -11,7 +10,6 @@
 # 	$password
 # 	$root_password
 
-
 list_timezones() {
 	_workdir="$PWD"
 	cd /usr/share/zoneinfo
@@ -21,7 +19,6 @@ list_timezones() {
 	unset _workdir
 }
 
-
 # Accepts input matching the regex.
 # $1 ... regex
 read_matching() {
@@ -30,7 +27,6 @@ read_matching() {
 	done
 	echo "$_string"
 }
-
 
 # $1 ... a user for whom the password is set
 get_password() {
@@ -46,7 +42,6 @@ get_password() {
 	echo "$_password"
 	unset _password _conf_pass
 }
-
 
 read_config() {
 	# username
@@ -105,14 +100,12 @@ read_config() {
 	fi
 }
 
-
 # Outputs variable definition to stdout.
 save_var() {
 	_value="$( eval echo "\$$1" )"
 	printf '%s="%s"\n' "$1" "$_value"
 	unset _value
 }
-
 
 save_config() {
 	save_var username

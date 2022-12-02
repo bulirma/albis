@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 include_universe_repo() {
 	if ! grep -q "^\[universe\]" /etc/pacman.conf; then
 		echo "
@@ -15,7 +14,6 @@ Server = https://ftp.crifo.org/artix-universe/" >>/etc/pacman.conf
 		pacman-key --init
 	fi
 }
-
 
 enable_arch_repos() {
 	wget https://github.com/archlinux/svntogit-packages/raw/packages/pacman-mirrorlist/trunk/mirrorlist -O /etc/pacman.d/mirrorlist-arch

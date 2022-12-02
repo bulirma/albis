@@ -11,7 +11,6 @@ src="$2"
 wget -h >/dev/null || pacman --noconfirm --needed -Sy wget
 
 wget "$src/albis.sh" -O "$workdir/albis.sh"
-wget "$src/config.sh" -O "$workdir/config.sh"
 mkdir -p "$workdir/albis_modules"
 wget "$src/albis_modules/options.sh" -O "$workdir/albis_modules/options.sh"
 wget "$src/albis_modules/albis_config.sh" -O "$workdir/albis_modules/albis_config.sh"

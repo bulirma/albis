@@ -1,0 +1,4 @@
+testing/*.iso
+testing/*.cow
+testing/albis
+config.sh

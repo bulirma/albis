@@ -35,8 +35,10 @@ install() {
 
 install_dotfiles() {
 	_temp_dir="$( sudo -u "$username" mktemp -d )"
-	sudo -u "$username" git clone --depth 1 "$1" "$_temp_dir"
-	sudo -u "$username" cp -rfT "$_temp_dir" "/home/$username"
+	sudo -u "$username" git clone --depth 1 "$1" "$_temp_dir" && {
+		sudo -u "$username" cp -rfT "$_temp_dir" "/home/$username"
+		sudo -u "$username" rm "/home/$username/LICENSE" "/home/$username/README.md"
+	}
 	rm -rf "$_temp_dir"
 	unset _temp_dir
 }

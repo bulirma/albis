@@ -19,11 +19,11 @@ curl https://raw.githubusercontent.com/bulirma/albis/master/launch.sh | sh
 ### Target
 
 The script(s) has (have) been tested for Artix ISO for x86\_64 from 2022-07-13. There are several features or configuration posibilities,
-which are available, but might not or does not work. Those are listed below.
+which are available, but might not or does not work properly (or at all). Those are listed below.
 
-- dotfiles installation
 - launch script (working, but cause bugs with gum util i.e. filling input field with commands)
 - efi boot (not tested)
+- reading configuration using gum (not complete)
 
 ## Testing
 

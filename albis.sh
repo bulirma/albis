@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 intro() {
 	echo "
   #                                     #
@@ -19,7 +18,6 @@ intro() {
 Artix Linux Bootstrapping Installation Script(s).
 "
 }
-
 
 load_modules() {
 	for module in $( find "$workdir/albis_modules" -name "*.sh" | xargs ); do
@@ -84,7 +82,7 @@ else
 	include_universe_repo
 	enable_arch_repos
 	install $( echo "$packages" | xargs )
-	#install_dotfiles
+	install_dotfiles "$dotfiles_repository"
 	postinstall_config
 fi
 

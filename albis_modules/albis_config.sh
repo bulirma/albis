@@ -9,6 +9,7 @@
 # 	$username
 # 	$password
 # 	$root_password
+# 	$dotfiles_repository
 
 list_timezones() {
 	_workdir="$PWD"
@@ -94,7 +95,9 @@ read_config() {
 
 	# todo: URL/URI validation
 	if [ -z "$dotfiles_repository" ]; then
-		dotfiles_repository="$( $gum input --placeholder "Dotfiles repository URL/URI...")"
+		echo "Dofiles repository URL:"
+		#dotfiles_repository="$( read_matching "https?:\/\/[a-z0-9-_.]\+\.[a-z]+(\/[A-Za-z0-9-_\/]\+(\.git)\?)\?")"
+		dotfiles_repository="$( $gum input )"
 		echo "Dotfiles repository:"
 		echo "$dotfiles_repository"
 	fi

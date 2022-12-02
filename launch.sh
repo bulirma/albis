@@ -10,4 +10,4 @@ wget "$src/download.sh" -O "$workdir/download.sh"
 sh "$workdir/download.sh" "$workdir" "$src" || exit 1
 sh "$workdir/albis.sh"
 
-rm -rf "$workdir"
+#rm -rf "$workdir"

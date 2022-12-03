@@ -10,4 +10,9 @@ postinstall_config() {
 
 finalize() {
 	umount -R "$mount_point"
+	echo "
+   //                         //
+  //  Installation complete  //
+ //                         //
+"
 }

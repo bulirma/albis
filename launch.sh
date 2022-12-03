@@ -9,8 +9,4 @@ wget "$src/download.sh" -O "$workdir/download.sh"
 
 sh "$workdir/download.sh" "$workdir" "$src" || exit 1
 clear
-sh "$workdir/albis.sh" && clear
-
-rm -rf "$workdir"
-
-exit 0
+sh "$workdir/albis.sh"

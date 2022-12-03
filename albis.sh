@@ -2,20 +2,20 @@
 
 intro() {
 	echo "
-  #                                     #
- #+#####################################+#
-  #                                     # 
-  #           .:     :                  #
-  #            :     :      .           #
-  #      ...   +     +           ...    #
-  #     +  +   +     +++.   +   +       #      
-  #    +   +   #     #  #   +    **+    #
-  #    #==#|   ###   +##*   #   ==+     #
-  #                                     # 
- #+#####################################+#
-  #                                     #
+      #                                     #
+     #+#####################################+#
+      #                                     # 
+      #           .:     :                  #
+      #            :     :      .           #
+      #      ...   +     +           ...    #
+      #     +  +   +     +++.   +   +       #      
+      #    +   +   #     #  #   +    **+    #
+      #    #==#|   ###   +##*   #   ==+     #
+      #                                     # 
+     #+#####################################+#
+      #                                     #
 
-Artix Linux Bootstrapping Installation Script(s).
+  Artix Linux Bootstrapping Installation Script(s)
 "
 }
 
@@ -26,18 +26,10 @@ load_modules() {
 }
 
 workdir="$( dirname "$0" )"
-
-load_modules
-
+config_file="$1"
 username="$2"
 password="$3"
 root_password="$4"
-
-config_file="$1"
-if [ -f "$config_file" ]; then
-	echo "$config_file" | grep -q '^/' || config_file="$workdir/$config_file"
-	. "$config_file"
-fi
 
 gum=gum
 [ -z "$interactive" ] && interactive=true
@@ -45,6 +37,13 @@ gum=gum
 [ -z "$mount_point" ] && mount_point="/mnt"
 [ -z "$config_file" ] && config_file="config.sh"
 [ -z "$user_source_directory" ] && user_source_directory=".local/src"
+
+if [ -f "$config_file" ]; then
+	echo "$config_file" | grep -q '^/' || config_file="$workdir/$config_file"
+	. "$config_file"
+fi
+
+load_modules
 
 $interactive && intro
 

@@ -38,6 +38,8 @@ gum=gum
 [ -z "$config_file" ] && config_file="config.sh"
 [ -z "$user_source_directory" ] && user_source_directory=".local/src"
 
+ARCH_LINUX_REPO_LIST="https://github.com/archlinux/svntogit-packages/raw/packages/pacman-mirrorlist/trunk/mirrorlist"
+
 if [ -f "$config_file" ]; then
 	echo "$config_file" | grep -q '^/' || config_file="$workdir/$config_file"
 	. "$config_file"

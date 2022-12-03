@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# external vars:
+# 	$country
+# 	$ARCH_LINUX_REPO_LIST
+
 include_universe_repo() {
 	if ! grep -q "^\[universe\]" /etc/pacman.conf; then
 		echo "
@@ -16,10 +20,10 @@ Server = https://ftp.crifo.org/artix-universe/" >>/etc/pacman.conf
 }
 
 enable_arch_repos() {
-	wget https://github.com/archlinux/svntogit-packages/raw/packages/pacman-mirrorlist/trunk/mirrorlist -O /etc/pacman.d/mirrorlist-arch
+	wget $ARCH_LINUX_REPO_LIST -O /etc/pacman.d/mirrorlist-arch
 	# uncomment servers for specified country
 	_temp_list="$( mktemp )"
-	awk -v country="Czechia" '/^ *$/ { p = 0; } // { line = $0; } /^#.*/ { if (p == 1) { sub("^#+", "", line); } } // { print line; } $0 ~ country { p = 1; }' /etc/pacman.d/mirrorlist-arch >"$_temp_list"
+	awk -v country="$country" '/^ *$/ { p = 0; } // { l = $0; } /^#.*/ && p == 1 { sub("^#", "", l); } // { print l; } $0 ~ country { p = 1; }' /etc/pacman.d/mirrorlist-arch >"$_temp_list"
 	cp "$_temp_list" /etc/pacman.d/mirrorlist-arch
 	rm -f "$_temp_list"
 	pacman --noconfirm --needed -S \
